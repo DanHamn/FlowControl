@@ -4,23 +4,63 @@ namespace FlowControl
 {
     internal class BioPrice
     {
+        internal static void BioMeny()
+        {
+            bool done = false;
+            do
+            {
+                Menyval1();
+
+
+                switch (Console.ReadLine())
+                {
+                    case "0":
+                        done = true;
+                        break;
+                    case "1":
+                        Console.WriteLine("Ange ålder");
+                        BioPrice.DeterminPriceFromAge();
+
+                        break;
+                    case "2":
+                        Console.WriteLine("Ange antal i sällskapet");
+                        BioPrice.DeterminePriceFromGroup();
+
+                        break;
+                    default:
+                        Console.WriteLine("Error: Felaktig input");
+                        break;
+                }
+
+            } while (done != true);
+        }
         internal static void DeterminPriceFromAge()
         {
             int age = int.Parse(Console.ReadLine());
 
-            if (age < 20)
+            if (age < 5)
             {
-                Console.WriteLine("Ungdomspris: 80kr");
+                Console.WriteLine("Barn under 5 går gratis");
                 Console.WriteLine(" ");
             }
-            else if (age > 64)
+            else if (age < 20)
             {
-                Console.WriteLine("Pensionärspris: 90kr");
+                Console.WriteLine("Ungdomspris: 80kr");
                 Console.WriteLine(" ");
             }
             else if (age > 19 && age < 65)
             {
                 Console.WriteLine("Standardpris: 120kr");
+                Console.WriteLine(" ");
+            }
+            else if (age > 64 && age < 100)
+            {
+                Console.WriteLine("Pensionärspris: 90kr");
+                Console.WriteLine(" ");
+            }
+            else if (age > 99)
+            {
+                Console.WriteLine("Pensionärer över 100 går gratis");
                 Console.WriteLine(" ");
             }
         }
@@ -54,5 +94,15 @@ namespace FlowControl
             Console.WriteLine($"Totalkostnad: {totalcost}");
             Console.WriteLine($" ");
         }
+
+
+        private static void Menyval1()
+        {
+            Console.WriteLine("0. Gå tillbaka till huvudmenyn");
+            Console.WriteLine("1. Prissättning efter ålder");
+            Console.WriteLine("2. Prisberäkning för ett sällskap");
+            Console.WriteLine(" ");
+        }
+
     }
 }

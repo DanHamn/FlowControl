@@ -27,46 +27,19 @@ namespace FlowControl
 
                 case "1":
                     Console.WriteLine("Menyval 1: Ungdom eller pensionär");
+                    BioPrice.BioMeny();
 
-                    bool done = false;
-                    do
-                    {
-                        Menyval1();
 
-                        switch (Console.ReadLine())
-                        {
-                            case "0":
-                                done = true;
-                                break;
-                            case "1":
-                                Console.WriteLine("Ange ålder");
-                                BioPrice.DeterminPriceFromAge();
-
-                                break;
-                            case "2":
-                                Console.WriteLine("Ange antal i sällskapet");
-                                BioPrice.DeterminePriceFromGroup();
-
-                                break;
-                            default:
-                                Console.WriteLine("Error: Felaktig input");
-                                break;
-                        }
-
-                    } while (done != true);
                     break;
                 case "2":
                     Console.WriteLine("Menyval 2: Upprepa 10 gånger");
-                    Console.WriteLine("Ange texten som ska upprepas");
-                    TextRepeat.Repeat10(Console.ReadLine());
-                    
+                    TextRepeat.Repeat10();
+
                     break;
                 case "3":
                     Console.WriteLine("Menyval 3: Det tredje ordet");
-                    Console.WriteLine("Ange ett mening med minst tre (3) ord");
-                    string input = new string(Console.ReadLine());
-                    string[] words = input.Split(' ');
-                    Console.WriteLine(words[2]);
+                    ThirdWord.Find();
+
                     break;
 
                 default:
@@ -83,13 +56,6 @@ namespace FlowControl
             Console.WriteLine("1. Ungdom eller pensionär");
             Console.WriteLine("2. Upprepa 10 gånger");
             Console.WriteLine("3. Det tredje ordet");
-            Console.WriteLine(" ");
-        }
-        private static void Menyval1()
-        {
-            Console.WriteLine("0. Gå tillbaka till huvudmenyn");
-            Console.WriteLine("1. Prissättning efter ålder");
-            Console.WriteLine("2. Prisberäkning för ett sällskap");
             Console.WriteLine(" ");
         }
     }
