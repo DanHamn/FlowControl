@@ -45,6 +45,7 @@ namespace FlowControl
         internal static void DeterminPriceFromAge()
         {
             int age = IntegerTest.ReturnInt();
+            int price = PriceList(age);
 
             if (age < 5)
             {
@@ -53,23 +54,54 @@ namespace FlowControl
             }
             else if (age > 4 && age < 20)
             {
-                Console.WriteLine("Ungdomspris: 80kr");
+                Console.WriteLine($"Ungdomspris: {price}kr");
                 Console.WriteLine(" ");
             }
             else if (age > 19 && age < 65)
             {
-                Console.WriteLine("Standardpris: 120kr");
+                Console.WriteLine($"Standardpris: {price}kr");
                 Console.WriteLine(" ");
             }
             else if (age > 64 && age < 100)
             {
-                Console.WriteLine("Pensionärspris: 90kr");
+                Console.WriteLine($"Pensionärspris: {price}kr");
                 Console.WriteLine(" ");
             }
             else if (age > 99)
             {
                 Console.WriteLine("Pensionärer över 100 går gratis");
                 Console.WriteLine(" ");
+            }
+        }
+
+        private static int PriceList(int age)
+        {
+            if (age < 5)
+            {
+                return 0;
+            }
+            else if (age > 4 && age < 20)
+            {
+                return 80;
+            }
+            else if (age > 19 && age < 65)
+            {
+                return 120;
+            }
+            else if (age > 64 && age < 100)
+            {
+                return 90;
+            }
+            else if (age > 99)
+            {
+                return 0;
+            }
+            else
+            {
+                Console.WriteLine("Error: Hamnade utanför listan över priser i BioPrice.PriceList()");
+                Console.WriteLine("Returerar åldern istället ");
+                return age;
+
             }
         }
 
