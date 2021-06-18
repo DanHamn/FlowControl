@@ -25,12 +25,12 @@ namespace FlowControl
                     done = true;
                     break;
                 case "1":
-                    Console.WriteLine("Ange ålder");
+
                     BioPrice.DeterminPriceFromAge();
 
                     break;
                 case "2":
-                    Console.WriteLine("Ange antal i sällskapet");
+
                     BioPrice.DeterminePriceFromGroup();
 
                     break;
@@ -42,9 +42,11 @@ namespace FlowControl
             return done;
         }
 
+        //Visar kostnaden för en pesron passerat på deras ålder i input
         internal static void DeterminPriceFromAge()
         {
-            int age = IntegerTest.ReturnInt();
+            Console.WriteLine("Ange ålder");
+            int age = IntegerTest.ReturnInt(Console.ReadLine());
             int price = PriceList(age);
 
             if (age < 5)
@@ -74,6 +76,52 @@ namespace FlowControl
             }
         }
 
+        //Beräknar kostnaden på ett varierande stort sällskap
+        internal static void DeterminePriceFromGroup()
+        {
+            Console.WriteLine("Ange antal i sällskapet");
+            int quantity = IntegerTest.ReturnInt(Console.ReadLine());
+            int[] ages = new int[quantity];
+            for (int i = 0; i < quantity; i++)
+            {
+                Console.WriteLine($"Ange åldern för person nr. {i + 1}");
+                ages[i] = IntegerTest.ReturnInt(Console.ReadLine());
+            }
+
+            int totalcost = new();
+            foreach (int age in ages)
+            {
+                if (age < 5)
+                {totalcost += PriceList(age); 
+                }
+                else if (age > 4 && age < 20)
+                {totalcost += PriceList(age);
+                }
+                else if (age > 19 && age < 65)
+                {totalcost += PriceList(age);
+                }
+                else if (age > 64 && age < 100)
+                {totalcost += PriceList(age);
+                }
+                else if (age > 99)
+                {totalcost += PriceList(age);
+                }
+            }
+
+            Console.WriteLine($"Antal personer i sällskapet: {quantity}");
+            Console.WriteLine($"Totalkostnad: {totalcost}kr");
+            Console.WriteLine($" ");
+        }
+
+        //Samling av grund instruktionerna för Menyval 1
+        private static void Menyval1()
+        {
+            Console.WriteLine("0. Gå tillbaka till huvudmenyn");
+            Console.WriteLine("1. Prissättning efter ålder");
+            Console.WriteLine("2. Prisberäkning för ett sällskap");
+            Console.WriteLine(" ");
+        }
+        //Prislista för dem olika åldrarna.
         private static int PriceList(int age)
         {
             if (age < 5)
@@ -98,58 +146,11 @@ namespace FlowControl
             }
             else
             {
+                //Felkod om man råkar använda något input som är utanför prislistans if statements
                 Console.WriteLine("Error: Hamnade utanför listan över priser i BioPrice.PriceList()");
-                Console.WriteLine("Returerar åldern istället ");
-                return age;
-
+                Console.WriteLine("Returerar 0");
+                return 0;
             }
-        }
-
-        internal static void DeterminePriceFromGroup()
-        {
-            int quantity = IntegerTest.ReturnInt();
-            int[] ages = new int[quantity];
-            for (int i = 0; i < quantity; i++)
-            {
-                Console.WriteLine($"Ange åldern för person nr. {i + 1}");
-                ages[i] = IntegerTest.ReturnInt();
-            }
-            int totalcost = new();
-            foreach (int age in ages)
-            {
-                if (age < 5)
-                {
-                    totalcost += 0;
-                }
-                else if (age > 4 && age < 20)
-                {
-                    totalcost += 80;
-                }
-                else if (age > 19 && age < 65)
-                {
-                    totalcost += 120;
-                }
-                else if (age > 64 && age < 100)
-                {
-                    totalcost += 90;
-                }
-                else if (age > 99)
-                {
-                    totalcost += 0;
-                }
-            }
-            Console.WriteLine($"Antal personer i sällskapet: {quantity}");
-            Console.WriteLine($"Totalkostnad: {totalcost}kr");
-            Console.WriteLine($" ");
-        }
-
-
-        private static void Menyval1()
-        {
-            Console.WriteLine("0. Gå tillbaka till huvudmenyn");
-            Console.WriteLine("1. Prissättning efter ålder");
-            Console.WriteLine("2. Prisberäkning för ett sällskap");
-            Console.WriteLine(" ");
         }
 
     }

@@ -4,6 +4,7 @@ namespace FlowControl
 {
     internal class TextRepeat
     {
+        //Repeterar input string 10 gånger på samma rad med numrering
         internal static void Repeat10()
         {
             Console.WriteLine("Menyval 2: Upprepa 10 gånger");
