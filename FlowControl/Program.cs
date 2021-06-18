@@ -56,12 +56,17 @@ namespace FlowControl
                     } while (done != true);
                     break;
                 case "2":
+                    Console.WriteLine("Menyval 2: Upprepa 10 gånger");
                     Console.WriteLine("Ange texten som ska upprepas");
                     TextRepeat.Repeat10(Console.ReadLine());
                     
                     break;
                 case "3":
-
+                    Console.WriteLine("Menyval 3: Det tredje ordet");
+                    Console.WriteLine("Ange ett mening med minst tre (3) ord");
+                    string input = new string(Console.ReadLine());
+                    string[] words = input.Split(' ');
+                    Console.WriteLine(words[2]);
                     break;
 
                 default:
