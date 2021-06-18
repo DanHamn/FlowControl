@@ -44,7 +44,7 @@ namespace FlowControl
 
         internal static void DeterminPriceFromAge()
         {
-            int age = int.Parse(Console.ReadLine());
+            int age = IntegerTest.ReturnInt();
 
             if (age < 5)
             {
@@ -75,12 +75,12 @@ namespace FlowControl
 
         internal static void DeterminePriceFromGroup()
         {
-            int quantity = int.Parse(Console.ReadLine());
+            int quantity = IntegerTest.ReturnInt();
             int[] ages = new int[quantity];
             for (int i = 0; i < quantity; i++)
             {
                 Console.WriteLine($"Ange åldern för person nr. {i + 1}");
-                ages[i] = int.Parse(Console.ReadLine());
+                ages[i] = IntegerTest.ReturnInt();
             }
             int totalcost = new();
             foreach (int age in ages)
@@ -107,7 +107,7 @@ namespace FlowControl
                 }
             }
             Console.WriteLine($"Antal personer i sällskapet: {quantity}");
-            Console.WriteLine($"Totalkostnad: {totalcost}");
+            Console.WriteLine($"Totalkostnad: {totalcost}kr");
             Console.WriteLine($" ");
         }
 

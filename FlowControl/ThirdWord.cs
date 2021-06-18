@@ -27,12 +27,12 @@ namespace FlowControl
 
             do
             {
-                Console.WriteLine("Ange ett mening med minst tre (3) ord");
+                Console.WriteLine("Ange ett mening med minst tre (3) ord separerade med mellanslag");
                 string input = new(Console.ReadLine());
                 string[] words = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                 if (words.Length < 3)
                 {
-                    Console.WriteLine("Error: Måste ange en mening med minst tre ord");
+                    Console.WriteLine("Error: Måste ange en mening med minst tre ord separerade med mellanslag");
                 }
                 else
                 {

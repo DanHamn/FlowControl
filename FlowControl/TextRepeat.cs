@@ -13,6 +13,7 @@ namespace FlowControl
             {
                 Console.Write($"{i + 1}: {input} ");
             }
+            Console.WriteLine("");
         }
     }
 }
