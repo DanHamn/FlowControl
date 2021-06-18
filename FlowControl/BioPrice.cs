@@ -6,34 +6,42 @@ namespace FlowControl
     {
         internal static void BioMeny()
         {
+            Console.WriteLine("Menyval 1: Ungdom eller pensionär");
             bool done = false;
             do
             {
                 Menyval1();
 
-
-                switch (Console.ReadLine())
-                {
-                    case "0":
-                        done = true;
-                        break;
-                    case "1":
-                        Console.WriteLine("Ange ålder");
-                        BioPrice.DeterminPriceFromAge();
-
-                        break;
-                    case "2":
-                        Console.WriteLine("Ange antal i sällskapet");
-                        BioPrice.DeterminePriceFromGroup();
-
-                        break;
-                    default:
-                        Console.WriteLine("Error: Felaktig input");
-                        break;
-                }
+                done = Input(done);
 
             } while (done != true);
         }
+
+        private static bool Input(bool done)
+        {
+            switch (Console.ReadLine())
+            {
+                case "0":
+                    done = true;
+                    break;
+                case "1":
+                    Console.WriteLine("Ange ålder");
+                    BioPrice.DeterminPriceFromAge();
+
+                    break;
+                case "2":
+                    Console.WriteLine("Ange antal i sällskapet");
+                    BioPrice.DeterminePriceFromGroup();
+
+                    break;
+                default:
+                    Console.WriteLine("Error: Felaktig input");
+                    break;
+            }
+
+            return done;
+        }
+
         internal static void DeterminPriceFromAge()
         {
             int age = int.Parse(Console.ReadLine());
@@ -43,7 +51,7 @@ namespace FlowControl
                 Console.WriteLine("Barn under 5 går gratis");
                 Console.WriteLine(" ");
             }
-            else if (age < 20)
+            else if (age > 4 && age < 20)
             {
                 Console.WriteLine("Ungdomspris: 80kr");
                 Console.WriteLine(" ");
@@ -75,19 +83,27 @@ namespace FlowControl
                 ages[i] = int.Parse(Console.ReadLine());
             }
             int totalcost = new();
-            foreach (int i in ages)
+            foreach (int age in ages)
             {
-                if (i < 20)
+                if (age < 5)
+                {
+                    totalcost += 0;
+                }
+                else if (age > 4 && age < 20)
                 {
                     totalcost += 80;
                 }
-                else if (i > 64)
+                else if (age > 19 && age < 65)
+                {
+                    totalcost += 120;
+                }
+                else if (age > 64 && age < 100)
                 {
                     totalcost += 90;
                 }
-                else if (i > 19 && i < 65)
+                else if (age > 99)
                 {
-                    totalcost += 120;
+                    totalcost += 0;
                 }
             }
             Console.WriteLine($"Antal personer i sällskapet: {quantity}");
