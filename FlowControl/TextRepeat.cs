@@ -2,7 +2,7 @@
 
 namespace FlowControl
 {
-    internal class Text
+    internal class TextRepeat
     {
         internal static void Repeat10(string input)
         {

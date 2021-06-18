@@ -57,7 +57,7 @@ namespace FlowControl
                     break;
                 case "2":
                     Console.WriteLine("Ange texten som ska upprepas");
-                    Text.Repeat10(Console.ReadLine());
+                    TextRepeat.Repeat10(Console.ReadLine());
                     
                     break;
                 case "3":
