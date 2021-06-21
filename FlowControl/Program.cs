@@ -22,6 +22,16 @@ namespace FlowControl
 
             } while (true);
         }
+        private static void ShowMainMeny()
+        {
+            //Samling av instruktionerna för huvudmenyn
+            Console.WriteLine("Huvudmeny");
+            Console.WriteLine("0. Avsluta programmet");
+            Console.WriteLine("1. Ungdom eller pensionär");
+            Console.WriteLine("2. Upprepa 10 gånger");
+            Console.WriteLine("3. Det tredje ordet");
+            Console.WriteLine(" ");
+        }
 
         private static void UserInput()
             //Samling av överliggande switchen som tar användar inputen och startar den specifika delen, samt stänger programmet
@@ -51,15 +61,5 @@ namespace FlowControl
         }
 
 
-        private static void ShowMainMeny()
-        {
-            //Samling av instruktionerna för huvudmenyn
-            Console.WriteLine("Huvudmeny");
-            Console.WriteLine("0. Avsluta programmet");
-            Console.WriteLine("1. Ungdom eller pensionär");
-            Console.WriteLine("2. Upprepa 10 gånger");
-            Console.WriteLine("3. Det tredje ordet");
-            Console.WriteLine(" ");
-        }
     }
 }

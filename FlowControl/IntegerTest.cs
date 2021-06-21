@@ -13,10 +13,12 @@ namespace FlowControl
                 if (success == false) //Om input inte är en int så kommer man hit
                 {
                     Console.WriteLine("Måste ange ett positivt heltal");
+                    input = Console.ReadLine();
                 }
                 else if (output < 0) //Om talet är mindre än 0 så kommer man hit
                 {
                     Console.WriteLine("Måste ange ett positivt heltal");
+                    input = Console.ReadLine();
                 }
                 else //Om tallet är ett positivt heltal så kommer man hit
                 {
