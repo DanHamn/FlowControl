@@ -7,9 +7,11 @@ namespace FlowControl
 
         public static int ReturnInt(string input) //Denna kod bekräftar om inputen är ett positivt heltal och ber användaren ange ett tal om input inte är det
         {
+            bool success;
+            int output;
             do
             {
-                bool success = int.TryParse(input, out int output); //Skickar false/true till success och heltalet till output
+                success = int.TryParse(input, out output); //Skickar false/true till success och heltalet till output
                 if (success == false) //Om input inte är en int så kommer man hit
                 {
                     Console.WriteLine("Måste ange ett positivt heltal");
@@ -20,11 +22,9 @@ namespace FlowControl
                     Console.WriteLine("Måste ange ett positivt heltal");
                     input = Console.ReadLine();
                 }
-                else //Om tallet är ett positivt heltal så kommer man hit
-                {
-                    return output;
-                }
-            } while (true);
+            } while (success);
+
+            return output;
         }
     }
 }
